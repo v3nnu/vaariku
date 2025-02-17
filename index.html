@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaariku – Your Perfect Getaway on Hiiumaa Island</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Vaariku – Your Perfect Getaway on Hiiumaa Island">
+    <meta property="og:description" content="Experience the charm and tranquility of Vaariku, nestled in the heart of Hiiumaa Island. Our beautiful accommodation offers everything you need for a relaxing and memorable stay.">
+    <meta property="og:image" content="https://vaariku.com/thumbnail.jpg">
+    <meta property="og:url" content="https://vaariku.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        .header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            z-index: 1000;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-links {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0 1rem;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+        .language-selector {
+            position: absolute;
+            top: 10px;
+            right: 60px;
+            display: flex;
+            gap: 10px;
+        }
+        .language-selector img {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .language-selector img:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .hero {
+            position: relative;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin: 0;
+            z-index: 1;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            justify-content: center;
+        }
+        .section .card {
+            flex: 1 1 calc(50% - 1rem);
+            max-width: 590px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            background-color: #fff;
+        }
+        .section .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .section .card h2 {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem;
+            margin: 0;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .section .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s;
+            opacity: 0;
+            z-index: 1;
+        }
+        .section .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+        .section .card:hover::before {
+            opacity: 1;
+        }
+        .section .card:hover img {
+            transform: scale(1.1);
+            opacity: 0.7;
+        }
+        .section .card:hover h2 {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-10px);
+        }
+        .gallery-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .gallery-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .gallery {
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .gallery h3 {
+            text-align: center;
+            margin: 1rem 0;
+            font-family: 'Playfair Display', serif;
+        }
+        .close-gallery {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 0, 0, 0.8);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem 0.8rem;
+            transition: background 0.3s;
+        }
+        .close-gallery:hover {
+            background: rgba(255, 0, 0, 1);
+        }
+        .cta-button {
+            display: inline-block;
+            text-align: center;
+            background: #ffd700;
+            color: #333;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background 0.3s, color 0.3s;
+        }
+        .cta-button:hover {
+            background: #ffcc00;
+            color: white;
+        }
+        .footer {
+            background-color: rgba(51, 51, 51, 0.9);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.5);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .footer .social-icons {
+            margin-top: 1rem;
+        }
+        .footer .social-icons a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer .social-icons a:hover {
+            color: #ffd700;
+        }
+        @media (max-width: 768px) {
+            .section .card {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+            .language-selector {
+                right: 10px;
+            }
+        }
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+        .fade-in {
+            opacity: 1;
+            transition: opacity 0.5s ease-in;
+        }
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 0.15em solid orange;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: orange; }
+        }
+        .gallery.booking {
+            max-width: 1000px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .calendar-container {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .booking-form-container {
+            width: 100%;
+        }
+        .booking-form-container form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .booking-form-container .form-group {
+            margin-bottom: 1rem;
+        }
+        .booking-form-container .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        .booking-form-container input,
+        .booking-form-container select,
+        .booking-form-container textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .booking-form-container input[type="date"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: white;
+            cursor: pointer;
+        }
+        .booking-form-container button {
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .gallery.booking {
+                padding: 10px;
+            }
+            .booking-form-container form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="header" id="header">
+            <div class="nav-links">
+                <a data-key="saunaHouse" onclick="scrollToSection('sauna-house')">Sauna House</a>
+                <a data-key="guestHouse" onclick="scrollToSection('guest-house')">Guest House</a>
+                <a data-key="activities" onclick="scrollToSection('activities')">Activities</a>
+                <a data-key="amenities" onclick="scrollToSection('amenities')">Amenities</a>
+                <a data-key="foodDrinks" onclick="scrollToSection('food-drinks')">Food & Drinks</a>
+                <a data-key="pricing" onclick="scrollToSection('pricing')">Pricing</a>
+                <a data-key="contact" onclick="scrollToSection('contact')">Contact</a>
+                <a data-key="booking" onclick="openGallery('booking-gallery')">Book Now</a>
+            </div>
+            <div class="language-selector">
+                <img src="https://vaariku.com/flags/estonia.png" alt="et" onclick="changeLanguage('et')">
+                <img src="https://vaariku.com/flags/uk.png" alt="en" onclick="changeLanguage('en')">
+                <img src="https://vaariku.com/flags/russia.png" alt="ru" onclick="changeLanguage('ru')">
+            </div>
+        </div>
+        <video autoplay muted loop playsinline>
+            <source src="https://vaariku.com/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h1 data-key="welcome">Welcome to Vaariku</h1>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <div class="card" id="sauna-house" onclick="openGallery('sauna-house-gallery')">
+                <img src="https://vaariku.com/sauna-house.jpg" alt="Sauna House">
+                <h2 data-key="saunaHouse">Sauna House</h2>
+            </div>
+            <div class="card" id="guest-house" onclick="openGallery('guest-house-gallery')">
+                <img src="https://vaariku.com/guest-house.
+<img src="https://vaariku.com/guest-house.jpg" alt="Guest House">
+                <h2 data-key="guestHouse">Guest House</h2>
+            </div>
+        </div>
+        <div class="section">
+            <div class="card" id="activities" onclick="openGallery('activities-gallery')">
+                <img src="https://vaariku.com/activities.jpg" alt="Activities">
+                <h2 data-key="activities">Activities</h2>
+            </div>
+            <div class="card" id="amenities" onclick="openGallery('amenities-gallery')">
+                <img src="https://vaariku.com/amenities.jpg" alt="Amenities">
+                <h2 data-key="amenities">Amenities</h2>
+            </div>
+        </div>
+        <div class="section">
+            <div class="card" id="food-drinks" onclick="openGallery('food-drinks-gallery')">
+                <img src="https://vaariku.com/food-drinks.jpg" alt="Food & Drinks">
+                <h2 data-key="foodDrinks">Food & Drinks</h2>
+            </div>
+            <div class="card" id="pricing" onclick="openGallery('pricing-gallery')">
+                <img src="https://vaariku.com/pricing.jpg" alt="Pricing">
+                <h2 data-key="pricing">Pricing</h2>
+            </div>
+        </div>
+        <div class="section">
+            <div class="card" id="contact" onclick="openGallery('contact-gallery')">
+                <img src="https://vaariku.com/contact.jpg" alt="Contact">
+                <h2 data-key="contact">Contact</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Vaariku. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+    </div>
+
+    <!-- Gallery Overlays -->
+    <div class="gallery-overlay" id="sauna-house-gallery">
+        <button class="close-gallery" onclick="closeGallery('sauna-house-gallery')">&times;</button>
+        <div class="gallery">
+            <img src="https://vaariku.com/sauna-room1.jpg" alt="Sauna House Room 1">
+            <h3>Room 1</h3>
+            <img src="https://vaariku.com/sauna-room2.jpg" alt="Sauna House Room 2">
+            <h3>Room 2</h3>
+            <img src="https://vaariku.com/sauna-room3.jpg" alt="Sauna House Room 3">
+            <h3>Room 3</h3>
+            <a onclick="openGallery('booking-gallery')" class="cta-button">Book Now</a>
+        </div>
+    </div>
+    <div class="gallery-overlay" id="guest-house-gallery">
+        <button class="close-gallery" onclick="closeGallery('guest-house-gallery')">&times;</button>
+        <div class="gallery">
+            <img src="https://vaariku.com/guest-room1.jpg" alt="Guest House Room 1">
+            <h3>Room 1</h3>
+            <img src="https://vaariku.com/guest-room2.jpg" alt="Guest House Room 2">
+            <h3>Room 2</h3>
+            <img src="https://vaariku.com/guest-room3.jpg" alt="Guest House Room 3">
+            <h3>Room 3</h3>
+            <a onclick="openGallery('booking-gallery')" class="cta-button">Book Now</a>
+        </div>
+    </div>
+    <div class="gallery-overlay" id="activities-gallery">
+        <button class="close-gallery" onclick="closeGallery('activities-gallery')">&times;</button>
+        <div class="gallery">
+            <img src="https://vaariku.com/pool-table.jpg" alt="Pool Table">
+            <h3>Pool Table</h3>
+            <img src="https://vaariku.com/disc-golf.jpg" alt="Disc Golf">
+            <h3>Disc Golf</h3>
+            <img src="https://vaariku.com/hot-tub.jpg" alt="Hot Tub">
+            <h3>Hot Tub</h3>
+        </div>
+    </div>
+    <div class="gallery-overlay" id="amenities-gallery">
+        <button class="close-gallery" onclick="closeGallery('amenities-gallery')">&times;</button>
+        <div class="gallery">
+            <img src="https://vaariku.com/wifi.jpg" alt="WiFi Everywhere">
+            <h3>WiFi Everywhere</h3>
+            <img src="https://vaariku.com/tv.jpg" alt="Flat Screen TV">
+            <h3>Flat Screen TV</h3>
+            <img src="https://vaariku.com/grilling-place.jpg" alt="Grilling Place">
+            <h3>Grilling Place</h3>
+            <img src="https://vaariku.com/kitchen.jpg" alt="Fully-Equipped Kitchen">
+            <h3>Fully-Equipped Kitchen</h3>
+            <img src="https://vaariku.com/fireplace.jpg" alt="Outdoor Fireplace">
+            <h3>Outdoor Fireplace</h3>
+        </div>
+    </div>
+    <div class="gallery-overlay" id="food-drinks-gallery">
+        <button class="close-gallery" onclick="closeGallery('food-drinks-gallery')">&times;</button>
+        <div class="gallery">
+            <img src="https://vaariku.com/food-drink1.jpg" alt="Food and Drink 1">
+            <h3>Food and Drink 1</h3>
+            <img src="https://vaariku.com/food-drink2.jpg" alt="Food and Drink 2">
+            <h3>Food and Drink 2</h3>
+            <img src="https://vaariku.com/food-drink3.jpg" alt="Food and Drink 3">
+            <h3>Food and Drink 3</h3>
+            <img src="https://vaariku.com/food-drink4.jpg" alt="Food and Drink 4">
+            <h3>Food and Drink 4</h3>
+            <img src="https://vaariku.com/food-drink5.jpg" alt="Food and Drink 5">
+            <h3>Food and Drink 5</h3>
+        </div>
+    </div>
+    <div class="gallery-overlay" id="pricing-gallery">
+        <button class="close-gallery" onclick="closeGallery('pricing-gallery')">&times;</button>
+        <div class="gallery">
+            <h3>Pricing</h3>
+            <p>Winter: $100 per night</p>
+            <p>Summer: $150 per night</p>
+        </div>
+    </div>
+    <div class="gallery-overlay" id="contact-gallery">
+        <button class="close-gallery" onclick="closeGallery('contact-gallery')">&times;</button>
+        <div class="gallery">
+            <h3>Contact Us</h3>
+            <p>Email: info@vaariku.com</p>
+            <p>Phone: +372 1234 5678</p>
+            <p>Address: Vaariku, Hiiumaa Island, Estonia</p>
+        </div>
+    </div>
+    <div class="gallery-overlay" id="booking-gallery">
+        <button class="close-gallery" onclick="closeGallery('booking-gallery')">&times;</button>
+        <div class="gallery booking">
+            <h2>Book Your Stay</h2>
+            <div class="calendar-container">
+                <iframe src="https://calendar.google.com/calendar/embed?src=kulalistele%40gmail.com&ctz=Europe%2FTallinn&wkst=2&bgcolor=%23ffffff&color=%23333333&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0" style="border-width:0" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
+            </div>
+            <div class="booking-form-container">
+                <form id="booking-form" action="https://formspree.io/f/xkgwbjql" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="room">Select Room:</label>
+                        <select id="room" name="room" required>
+                            <option value="">Choose a room</option>
+                            <option value="Northern Lights">Northern Lights Room</option>
+                            <option value="Cosmos">Cosmos Room</option>
+                            <option value="Family">Family Room</option>
+                            <option value="Sauna House">Sauna House</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="check-in">Check-in Date:</label>
+                        <input type="date" id="check-in" name="check-in" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="check-out">Check-out Date:</label>
+                        <input type="date" id="check-out" name="check-out" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="arrival-time">Estimated Arrival Time:</label>
+                        <select id="arrival-time" name="arrival-time" required>
+                            <option value="">Select time</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="adults">Number of Adults:</label>
+                        <input type="number" id="adults" name="adults" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="children">Number of Children:</label>
+                        <input type="number" id="children" name="children" min="0" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="comments">Additional Comments:</label>
+                        <textarea id="comments" name="comments" rows="4"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="cta-button">Send Booking Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/665f808e981b6c564778948c/1hvigsb01';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- JavaScript for Gallery Overlay and other functionalities -->
+    <script>
+        const languageFiles = {
+            en: 'https://vaariku.com/en.json',
+            et: 'https://vaariku.com/et.json',
+            ru: 'https://vaariku.com/ru.json'
+        };
+
+        function changeLanguage(lang) {
+            fetch(languageFiles[lang])
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelectorAll('[data-key]').forEach(element => {
+                        const key = element.getAttribute('data-key');
+                        element.classList.add('fade-out');
+                        setTimeout(() => {
+                            typeWriter(element, data[key]);
+                            element.classList.remove('fade-out');
+                            element.classList.add('fade-in');
+                        }, 500);
+                    });
+                });
+        }
+
+        function typeWriter(element, text) {
+            const typeSpeed = 50; // Typing speed in milliseconds
+            element.textContent = '';
+            let i = 0;
+            const type = () => {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, typeSpeed);
+                }
+            };
+            type();
+        }
+
+        function openGallery(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeGallery(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function scrollToSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                openGallery(sectionId + '-gallery');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate arrival time options
+            var arrivalTimeSelect = document.getElementById('arrival-time');
+            for (var i = 0; i < 24; i++) {
+                var hour = i < 10 ? '0' + i : i;
+                arrivalTimeSelect.innerHTML += `<option value="${hour}:00">${hour}:00</option>`;
+                arrivalTimeSelect.innerHTML += `<option value="${hour}:30">${hour}:30</option>`;
+            }
+
+            // Set min date for check-in and check-out
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById('check-in').min = today;
+            document.getElementById('check-out').min = today;
+
+            document.getElementById('check-in').addEventListener('change', function() {
+                document.getElementById('check-out').min = this.value;
+            });
+
+            // Improve date input functionality
+            const dateInputs = document.querySelectorAll('input[type="date"]');
+            dateInputs.forEach(input => {
+                input.addEventListener('click', function(e) {
+                    // For non-mobile devices, prevent the default date picker
+                    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                        e.preventDefault();
+                        this.showPicker();
+                    }
+                });
+            });
+
+            // Handle form submission
+            var form = document.getElementById('booking-form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                var formData = new FormData(form);
+                fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => response.json())
+                .then(data => {
+                    alert('Booking request sent successfully!');
+                    form.reset();
+                    closeGallery('booking-gallery');
+                })
+                .catch(error => {
+                    alert('Oops! There was a problem submitting your form');
+                });
+            });
+
+            // Make sure all gallery overlays are properly set up
+            var galleries = document.querySelectorAll('.gallery-overlay');
+            galleries.forEach(function(gallery) {
+                var closeButton = gallery.querySelector('.close-gallery');
+                if (closeButton) {
+                    closeButton.addEventListener('click', function() {
+                        closeGallery(gallery.id);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
